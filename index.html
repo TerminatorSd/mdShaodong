@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Markdown Demo</title>
+	</head>
+	<body>
+		<div class="container">
+			<button id="ok">写好了</button>
+			<div class="left">
+				<p>Content</p>
+				<textarea id="content">
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+`console.log('test');`
+
+[测试](http://example.com)
+
+![tmall](https://img.alicdn.com/tfs/TB1MaLKRXXXXXaWXFXXXXXXXXXX-480-260.png)
+
+```
+class Example extends React.Component { 
+	render () {
+	// TODO ...
+	} 
+}
+```
+				</textarea>
+			</div>
+			<div class="right">
+				<p>Result</p>
+				<div class="result" id="res"></div>
+			</div>
+		</div>
+		<script src="./dist/bundle.js"></script>
+	</body>
+</html>
+

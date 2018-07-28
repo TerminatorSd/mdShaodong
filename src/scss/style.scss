@@ -1,0 +1,31 @@
+// markdown style
+
+pre {
+  margin: 20px 0;
+  padding: 15px;
+  font-size: 13px;
+  word-wrap: normal;
+  word-break: break-all;
+  white-space: pre;
+  overflow: auto;
+  border-radius: 4px;
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  color: #abb2bf;
+  background: #282c34;
+  code {
+    padding: 0;
+    background-color: transparent;
+    white-space: pre;
+    border: none;
+    font-size: 12px;
+    vertical-align: middle;
+  }
+}
+.result {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
