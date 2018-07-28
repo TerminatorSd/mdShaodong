@@ -57,6 +57,7 @@ const toHtml = (str) => {
     if (codeFlag === 1) {
       tempHtml += `${str}\n`;
     } else {
+      // 普通文本中包含行内代码或者连接
       if (str.match(Reg.CODE) || str.match(Reg.HREFINLINE)) {
         str = dealWithInline(str);
       }
