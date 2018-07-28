@@ -14,14 +14,13 @@ pre {
   padding: .5em;
   color: #abb2bf;
   background: #282c34;
-  code {
-    padding: 0;
-    background-color: transparent;
-    white-space: pre;
-    border: none;
-    font-size: 12px;
-    vertical-align: middle;
-  }
+}
+code {
+  padding: 0;
+  white-space: pre;
+  border: none;
+  font-size: 12px;
+  vertical-align: middle;
 }
 .result {
   img {

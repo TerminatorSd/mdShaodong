@@ -28,11 +28,11 @@ const toHtml = (str) => {
   } else if (img) {
     // 图片
     resultHtml += `<img src="${img[2]}" alt="${img[1]}"></img>`;
-  } else if (str.match(/(`+)(([\s\S]*?))/)) {
-    // 代码
-    let code = str.match(/(`+)(([\s\S]*?))/);
+  } else if (str.match(Reg.CODE) && str.search(Reg.CODE) === 0) {
+    // 代码，在反引号开头的情况下才会进入
+    let code = str.match(Reg.CODE);
     // 单行代码
-    if (code[0].length === 1) {
+    if (code[0].length === 1 ) {
       // 单行内容不为空
       if (str.replace(/`/g, '')) {
         const codeHtml = Prism.highlight(str.replace(/`/g, ''), Prism.languages.javascript, 'javascript');
@@ -57,9 +57,23 @@ const toHtml = (str) => {
     if (codeFlag === 1) {
       tempHtml += `${str}\n`;
     } else {
+      if (str.match(Reg.CODE) || str.match(Reg.HREFINLINE)) {
+        str = dealWithInline(str);
+      }
       resultHtml += `<p>${str}</p>`;
     }
   }
+};
+
+const dealWithInline = (str) => {
+  // 非开头部分的代码和超链接
+  let href = str.match(Reg.HREFINLINE);
+  let url = str.match(Reg.URL);
+  let codeContent = str.split('`');
+  let codeHighlight = Prism.highlight(codeContent[1], Prism.languages.javascript, 'javascript');
+  let res = `${codeContent[0]}<code>${codeHighlight}</code>${codeContent[2]}`;
+  res = `${res.split(url[0])[0].split(href[0])[0]}<a href="${url[0]}">${url[0]}</a>${res.split(url + ')')[1]}`;
+  return res;
 };
 
 export default doTransfer;
